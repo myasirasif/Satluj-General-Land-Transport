@@ -3,18 +3,29 @@ import { Phone } from "lucide-react";
 import { WhatsAppIcon } from "./icons";
 import { siteConfig } from "@/lib/site-config";
 
+// Fixed contact shortcuts. The footer reserves bottom/right space for these
+// so they never cover page content.
 export function FloatingActions() {
   return (
     <>
-      <a
-        href={siteConfig.whatsapp.link}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Chat with us on WhatsApp"
-        className="fixed bottom-20 right-4 z-40 grid h-14 w-14 place-items-center rounded-full bg-[#1f8f4e] text-white shadow-lg transition-transform hover:scale-105 md:bottom-6 md:right-6"
-      >
-        <WhatsAppIcon className="h-7 w-7" />
-      </a>
+      <div className="fixed bottom-20 right-4 z-40 flex flex-col gap-3 md:bottom-6 md:right-6">
+        <a
+          href={`tel:${siteConfig.primaryPhone.tel}`}
+          aria-label={`Call ${siteConfig.primaryPhone.display}`}
+          className="hidden h-14 w-14 place-items-center rounded-full bg-brand text-white shadow-lg transition-transform hover:scale-105 hover:bg-brand-deep md:grid"
+        >
+          <Phone className="h-6 w-6" aria-hidden="true" />
+        </a>
+        <a
+          href={siteConfig.whatsapp.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Chat with us on WhatsApp"
+          className="grid h-14 w-14 place-items-center rounded-full bg-[#1f8f4e] text-white shadow-lg transition-transform hover:scale-105"
+        >
+          <WhatsAppIcon className="h-7 w-7" />
+        </a>
+      </div>
 
       <div className="fixed inset-x-0 bottom-0 z-40 grid grid-cols-2 border-t border-white/10 bg-ink md:hidden">
         <a

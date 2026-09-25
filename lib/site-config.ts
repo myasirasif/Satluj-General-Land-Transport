@@ -19,18 +19,21 @@ export const siteConfig = {
       street: "International City, X09 England Cluster",
       city: "Dubai",
       country: "UAE",
+      directions: "https://www.google.com/maps/dir/?api=1&destination=England+Cluster+X09+International+City+Dubai",
     },
     {
       label: "Yard",
       street: "Jabal Ali Industrial First, Warehouse S03",
       city: "Dubai",
       country: "UAE",
+      directions: "https://www.google.com/maps/dir/?api=1&destination=25.005615,55.117037",
     },
     {
       label: "Branch",
-      street: "Ras Al Khor Industrial 1",
+      street: "Ras Al Khor Industrial 1, near Al Hezam Al Akhtar Vehicle Maintenance",
       city: "Dubai",
       country: "UAE",
+      directions: "https://www.google.com/maps/dir/?api=1&destination=25.171122,55.345299",
     },
   ],
   poBox: "P.O. Box 31503, Dubai, UAE",
@@ -40,14 +43,34 @@ export const siteConfig = {
     { label: "Phone", display: "+971 4 876 8454", tel: "+97148768454" },
     { label: "Mobile", display: "+971 50 453 0759", tel: "+971504530759" },
     { label: "Mobile", display: "+971 52 904 5530", tel: "+971529045530" },
+    { label: "Branch", display: "+971 4 333 4513", tel: "+97143334513" },
+    { label: "Yard", display: "+971 4 333 2809", tel: "+97143332809" },
   ],
   primaryPhone: { display: "+971 50 453 0759", tel: "+971504530759" },
   whatsapp: {
     display: "+971 50 453 0759",
     link: "https://wa.me/971504530759?text=Hello%20Satluj%20Transport%2C%20I%20would%20like%20a%20quote.",
   },
+  // Second WhatsApp line listed on 2GIS.
+  whatsappAlt: {
+    display: "+971 52 904 5530",
+    link: "https://wa.me/971529045530?text=Hello%20Satluj%20Transport%2C%20I%20would%20like%20a%20quote.",
+  },
   email: "satlujtransportdubai@gmail.com",
+  altEmail: "satlujtransport@hotmail.com",
   instagram: "https://www.instagram.com/satlujtrpt/",
+  facebook: "https://facebook.com/satluj.transport",
+  // Source: HiDubai business listing.
+  hours: {
+    display: [
+      { days: "Monday to Saturday", time: "08:00 to 20:00" },
+      { days: "Sunday", time: "Closed" },
+    ],
+    schema: { days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], opens: "08:00", closes: "20:00" },
+  },
+  // Sources: HiDubai (branch) and 2GIS (yard).
+  branchGeo: { lat: 25.171122, lng: 55.345299 },
+  yardGeo: { lat: 25.005615, lng: 55.117037 },
   mapEmbed:
     "https://www.google.com/maps?q=England+Cluster+X09+International+City+Dubai&output=embed",
 
@@ -279,5 +302,28 @@ export const testimonials = [
     theme: "Fair pricing",
     quote:
       "Fair and affordable pricing with no surprises. Easy to deal with and very professional.",
+  },
+];
+
+export const faqs = [
+  {
+    q: "Where is Satluj Transport located?",
+    a: "Our head office is in International City (X09 England Cluster), our yard is in Jabal Ali Industrial First (Warehouse S03), and our branch is in Ras Al Khor Industrial 1, Dubai.",
+  },
+  {
+    q: "What are your working hours?",
+    a: "The office is open Monday to Saturday, 08:00 to 20:00, and closed on Sunday. Dispatch for booked loads runs 24/7.",
+  },
+  {
+    q: "What does Satluj Transport specialise in?",
+    a: "Road cargo: container haulage, loose cargo, flatbed and low-bed transport, tipper services, GCC cross-border freight and dedicated fleet hire.",
+  },
+  {
+    q: "Do you deliver outside the UAE?",
+    a: "Yes. We run cross-border freight to Saudi Arabia, Oman, Qatar, Kuwait and Bahrain, with documentation handled.",
+  },
+  {
+    q: "How can I contact you for a quote?",
+    a: "Call or WhatsApp +971 50 453 0759, call the office on +971 4 564 2288, email satlujtransportdubai@gmail.com, or send the quote form on this page.",
   },
 ];

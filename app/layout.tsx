@@ -40,7 +40,7 @@ const jsonLd = {
   image: `${siteConfig.url}/images/og-image.jpg`,
   email: siteConfig.email,
   telephone: siteConfig.phones[0].tel,
-  sameAs: [siteConfig.instagram],
+  sameAs: [siteConfig.instagram, siteConfig.facebook],
   areaServed: siteConfig.gccCountries.map((c) => c.name),
   knowsLanguage: siteConfig.languages,
   address: {
@@ -54,7 +54,16 @@ const jsonLd = {
     "@type": "Place",
     name: o.label,
     address: { "@type": "PostalAddress", streetAddress: o.street, addressLocality: o.city, addressCountry: "AE" },
+    ...(o.label === "Branch" && {
+      geo: { "@type": "GeoCoordinates", latitude: siteConfig.branchGeo.lat, longitude: siteConfig.branchGeo.lng },
+    }),
   })),
+  openingHoursSpecification: {
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: siteConfig.hours.schema.days,
+    opens: siteConfig.hours.schema.opens,
+    closes: siteConfig.hours.schema.closes,
+  },
   aggregateRating: {
     "@type": "AggregateRating",
     ratingValue: siteConfig.rating.value,
@@ -70,7 +79,10 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
         <MotionProvider>
           <Header />
-          <main id="main">{children}</main>
+          {/* overflow-x-clip: slide-in animations must never cause sideways scroll */}
+          <main id="main" className="overflow-x-clip">
+            {children}
+          </main>
           <Footer />
           <FloatingActions />
         </MotionProvider>

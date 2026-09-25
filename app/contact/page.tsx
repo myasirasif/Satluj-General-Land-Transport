@@ -1,10 +1,16 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Clock, Mail, MapPin, Navigation, Phone, Plus } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
 import { QuoteForm } from "@/components/QuoteForm";
-import { InstagramIcon, WhatsAppIcon } from "@/components/icons";
-import { siteConfig } from "@/lib/site-config";
+import { FacebookIcon, InstagramIcon, WhatsAppIcon } from "@/components/icons";
+import { faqs, siteConfig } from "@/lib/site-config";
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+};
 
 export const metadata: Metadata = {
   title: "Contact and Quote",
@@ -21,11 +27,11 @@ export default function ContactPage() {
         title="Get a quote today"
         intro={`${siteConfig.subLine}. Dispatch is available 24/7.`}
         image="/images/contact-hero.jpg"
-        alt="Satluj Transport dispatch office in Dubai"
+        alt="Satluj Transport warehouse and signboard at Ras Al Khor Industrial 1"
       />
 
       <section className="py-20 md:py-28">
-        <div className="container-x grid gap-16 lg:grid-cols-12">
+        <div className="container-x grid gap-16 lg:grid-cols-12 [&>*]:min-w-0">
           <div id="quote" className="scroll-mt-28 lg:col-span-7">
             <p className="eyebrow">Quote request</p>
             <h2 className="mt-3 text-4xl font-bold sm:text-5xl">Tell us about your load</h2>
@@ -62,9 +68,21 @@ export default function ContactPage() {
                   </li>
                 ))}
                 <li>
-                  <a href={`mailto:${siteConfig.email}`} className="flex items-center gap-3 text-ink hover:text-brand">
+                  <a href={siteConfig.whatsappAlt.link} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-ink hover:text-brand">
+                    <WhatsAppIcon className="h-4 w-4 text-brand" />
+                    <span className="w-16 text-xs uppercase tracking-widest text-steel">WhatsApp</span> {siteConfig.whatsappAlt.display}
+                  </a>
+                </li>
+                <li>
+                  <a href={`mailto:${siteConfig.email}`} className="flex items-center gap-3 break-all text-ink hover:text-brand">
                     <Mail className="h-4 w-4 text-brand" aria-hidden="true" />
                     <span className="w-16 text-xs uppercase tracking-widest text-steel">Email</span> {siteConfig.email}
+                  </a>
+                </li>
+                <li>
+                  <a href={`mailto:${siteConfig.altEmail}`} className="flex items-center gap-3 break-all text-ink hover:text-brand">
+                    <Mail className="h-4 w-4 text-brand" aria-hidden="true" />
+                    <span className="w-16 text-xs uppercase tracking-widest text-steel">Email</span> {siteConfig.altEmail}
                   </a>
                 </li>
                 <li>
@@ -73,7 +91,28 @@ export default function ContactPage() {
                     <span className="w-16 text-xs uppercase tracking-widest text-steel">Insta</span> @satlujtrpt
                   </a>
                 </li>
+                <li>
+                  <a href={siteConfig.facebook} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-ink hover:text-brand">
+                    <FacebookIcon className="h-4 w-4 text-brand" />
+                    <span className="w-16 text-xs uppercase tracking-widest text-steel">Facebook</span> satluj.transport
+                  </a>
+                </li>
               </ul>
+            </div>
+
+            <div className="bg-ink p-6 text-white">
+              <h3 className="flex items-center gap-2 text-lg font-semibold tracking-wider !text-white">
+                <Clock className="h-5 w-5 text-signal" aria-hidden="true" /> Office hours
+              </h3>
+              <dl className="mt-4 space-y-2 text-sm">
+                {siteConfig.hours.display.map((h) => (
+                  <div key={h.days} className="flex justify-between gap-4 border-b border-white/10 pb-2">
+                    <dt className="text-white/70">{h.days}</dt>
+                    <dd className="font-semibold">{h.time}</dd>
+                  </div>
+                ))}
+              </dl>
+              <p className="mt-3 text-xs text-white/60">Dispatch for booked loads runs 24/7.</p>
             </div>
 
             {siteConfig.offices.map((o, i) => (
@@ -86,11 +125,41 @@ export default function ContactPage() {
                     <br />
                     {o.city}, {o.country}
                   </p>
+                  <a
+                    href={o.directions}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold uppercase tracking-widest text-brand hover:text-brand-deep"
+                  >
+                    <Navigation className="h-3.5 w-3.5" aria-hidden="true" /> Get directions
+                    <span className="sr-only"> to our {o.label.toLowerCase()}</span>
+                  </a>
                 </div>
               </div>
             ))}
             <p className="pl-1 text-sm">{siteConfig.poBox}</p>
           </aside>
+        </div>
+      </section>
+
+      <section className="bg-concrete py-20 md:py-28">
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+        <div className="container-x grid gap-12 lg:grid-cols-12">
+          <div className="lg:col-span-4">
+            <p className="eyebrow">FAQ</p>
+            <h2 className="mt-3 text-4xl font-bold sm:text-5xl">Common questions</h2>
+          </div>
+          <div className="divide-y divide-steel/15 border-y border-steel/15 lg:col-span-8">
+            {faqs.map((f) => (
+              <details key={f.q} className="group py-5">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-6 font-display text-xl font-semibold uppercase text-ink marker:hidden">
+                  {f.q}
+                  <Plus className="h-5 w-5 shrink-0 text-brand transition-transform group-open:rotate-45" aria-hidden="true" />
+                </summary>
+                <p className="mt-3 max-w-2xl leading-relaxed">{f.a}</p>
+              </details>
+            ))}
+          </div>
         </div>
       </section>
 

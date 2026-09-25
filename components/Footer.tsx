@@ -1,27 +1,37 @@
 import Link from "next/link";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { Logo } from "./Logo";
-import { InstagramIcon } from "./icons";
+import { FacebookIcon, InstagramIcon } from "./icons";
 import { navLinks, services, siteConfig } from "@/lib/site-config";
 
 export function Footer() {
   return (
-    <footer className="relative bg-ink pb-24 text-white/70 md:pb-0">
+    <footer className="relative bg-ink pb-36 text-white/70 md:pb-0">
       <div className="hazard h-2" aria-hidden="true" />
       <div className="container-x grid gap-12 py-16 md:grid-cols-12">
         <div className="md:col-span-4">
           <Logo />
           <p className="mt-6 max-w-xs text-sm leading-relaxed">
-            {siteConfig.tagline}. {siteConfig.experience}, with {siteConfig.coverage.toLowerCase()}.
+            {siteConfig.tagline}. {siteConfig.experience}, with {siteConfig.coverage}.
           </p>
-          <a
-            href={siteConfig.instagram}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-6 inline-flex items-center gap-2 text-sm text-white hover:text-signal"
-          >
-            <InstagramIcon /> @satlujtrpt
-          </a>
+          <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2">
+            <a
+              href={siteConfig.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-sm text-white hover:text-signal"
+            >
+              <InstagramIcon /> @satlujtrpt
+            </a>
+            <a
+              href={siteConfig.facebook}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-sm text-white hover:text-signal"
+            >
+              <FacebookIcon /> satluj.transport
+            </a>
+          </div>
         </div>
 
         <div className="md:col-span-4">
@@ -37,6 +47,13 @@ export function Footer() {
               </li>
             ))}
             <li className="pl-7">{siteConfig.poBox}</li>
+            <li className="pl-7">
+              {siteConfig.hours.display.map((h) => (
+                <span key={h.days} className="block">
+                  {h.days}: <span className="text-white">{h.time}</span>
+                </span>
+              ))}
+            </li>
           </ul>
         </div>
 
@@ -75,7 +92,7 @@ export function Footer() {
         </div>
       </div>
       <div className="border-t border-white/10">
-        <div className="container-x flex flex-col gap-3 py-6 text-xs sm:flex-row sm:items-center sm:justify-between">
+        <div className="container-x flex flex-col gap-3 py-6 text-xs sm:flex-row sm:items-center sm:justify-between md:pb-24 lg:pb-6 lg:pr-28">
           <p>
             &copy; {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
           </p>
