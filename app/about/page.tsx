@@ -118,7 +118,7 @@ export default function AboutPage() {
             {teamSlots.map((t, i) => (
               <li key={t.src} className={i === 0 ? "sm:col-span-2 lg:col-span-6 lg:row-span-2" : "lg:col-span-6"}>
                 <div className={`relative overflow-hidden bg-concrete ${i === 0 ? "aspect-[4/3] lg:aspect-auto lg:h-full" : "aspect-[16/9]"}`}>
-                  <Image src={t.src} alt={t.alt} fill sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover" />
+                  <Image src={t.src} alt={t.alt} fill sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover object-top" />
                 </div>
               </li>
             ))}

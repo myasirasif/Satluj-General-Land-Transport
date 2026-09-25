@@ -3,7 +3,7 @@
 export const siteConfig = {
   name: "Satluj General Land Transport L.L.C",
   shortName: "Satluj Transport",
-  arabicName: "النقل البري العام",
+  arabicName: "ساتلج للنقل البري العام ذ.م.م",
   tagline: "Driving Trust, Delivering Reliability",
   subLine: "Contact us for the most affordable transportation services",
   experience: "Operating in Dubai for over 10 years",

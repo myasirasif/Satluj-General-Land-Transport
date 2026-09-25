@@ -1,7 +1,7 @@
-// Generates labelled placeholder JPGs in /public/images. Real photos can
+// Generates labelled placeholder JPGs in /public/images for missing slots only. Real photos can
 // simply overwrite these files (keep the same names). Run: npm run placeholders
 import sharp from "sharp";
-import { mkdirSync } from "node:fs";
+import { existsSync, mkdirSync } from "node:fs";
 
 const images = [
   ["hero-fleet.jpg", 2400, 1400], ["og-image.jpg", 1200, 630], ["why-satluj.jpg", 1200, 1500],
@@ -17,6 +17,7 @@ const images = [
 
 mkdirSync("public/images", { recursive: true });
 for (const [name, w, h] of images) {
+  if (existsSync(`public/images/${name}`)) continue; // never overwrite real photos
   const fs = Math.round(Math.min(w, h) / 14);
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}">
   <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2a2f35"/><stop offset="1" stop-color="#4A5158"/></linearGradient>

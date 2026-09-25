@@ -50,7 +50,7 @@ export function Header() {
       </a>
       <div className="container-x flex h-20 items-center justify-between gap-6">
         <Link href="/" aria-label={`${siteConfig.shortName} home`} className="relative z-10">
-          <Logo tone={solid ? "dark" : "light"} />
+          <Logo />
         </Link>
 
         <nav aria-label="Main" className="hidden lg:block">

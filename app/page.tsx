@@ -25,7 +25,7 @@ export default function Home() {
           fill
           priority
           sizes="100vw"
-          className="object-cover opacity-55"
+          className="object-cover opacity-35"
         />
         <div className="absolute inset-0 bg-gradient-to-tr from-brand-deep/95 via-brand/45 to-transparent" aria-hidden="true" />
         <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/30 to-transparent" aria-hidden="true" />

@@ -18,7 +18,7 @@ export function PageHero({
 }) {
   return (
     <section className="clip-diag-b relative overflow-hidden bg-ink pb-28 pt-40 md:pb-36 md:pt-48">
-      <Image src={image} alt={alt} fill priority sizes="100vw" className="object-cover opacity-40" />
+      <Image src={image} alt={alt} fill priority sizes="100vw" className="object-cover opacity-30" />
       <div className="absolute inset-0 bg-gradient-to-r from-brand-deep/95 via-ink/80 to-ink/40" aria-hidden="true" />
       <div className="hazard-soft absolute inset-0" aria-hidden="true" />
       <div className="container-x relative">

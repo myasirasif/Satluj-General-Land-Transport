@@ -1,8 +1,8 @@
 # Image slots
 
-Every image on the site is a placeholder. Replace a file with a real JPG **using the same file name** and it appears automatically. The recommended sizes are minimums; landscape photos should be at least as wide as listed. Keep each file under about 400 KB (export at 75 to 80 percent JPG quality).
+Any image can be swapped: replace a file with a real JPG **using the same file name** and it appears automatically. The recommended sizes are minimums; landscape photos should be at least as wide as listed. Keep each file under about 400 KB (export at 75 to 80 percent JPG quality).
 
-To recreate the placeholders, run `npm run placeholders`. Note that this overwrites the real photos.
+Photos from Instagram @satlujtrpt are already in place for: hero-fleet, og-image, why-satluj, about-hero, about-story, services-hero, fleet-hero, contact-hero, team-01 to 03, service-container, service-loose-cargo, service-gcc, truck-container-01 and 02. They are only 640px originals, so higher resolution versions should replace them when available. `npm run placeholders` only fills missing files.
 
 | File | Used on | Put this photo here | Size |
 |---|---|---|---|

@@ -10,7 +10,7 @@ export function Footer() {
       <div className="hazard h-2" aria-hidden="true" />
       <div className="container-x grid gap-12 py-16 md:grid-cols-12">
         <div className="md:col-span-4">
-          <Logo tone="light" />
+          <Logo />
           <p className="mt-6 max-w-xs text-sm leading-relaxed">
             {siteConfig.tagline}. {siteConfig.experience}, with {siteConfig.coverage.toLowerCase()}.
           </p>

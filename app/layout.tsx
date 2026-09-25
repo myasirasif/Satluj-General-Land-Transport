@@ -36,7 +36,7 @@ const jsonLd = {
   alternateName: siteConfig.shortName,
   slogan: siteConfig.tagline,
   url: siteConfig.url,
-  logo: `${siteConfig.url}/icon.svg`,
+  logo: `${siteConfig.url}/images/logo.png`,
   image: `${siteConfig.url}/images/og-image.jpg`,
   email: siteConfig.email,
   telephone: siteConfig.phones[0].tel,
