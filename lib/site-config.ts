@@ -39,13 +39,14 @@ export const siteConfig = {
     { label: "Phone", display: "+971 4 564 2288", tel: "+97145642288" },
     { label: "Phone", display: "+971 4 876 8454", tel: "+97148768454" },
     { label: "Mobile", display: "+971 50 453 0759", tel: "+971504530759" },
+    { label: "Mobile", display: "+971 52 904 5530", tel: "+971529045530" },
   ],
   primaryPhone: { display: "+971 50 453 0759", tel: "+971504530759" },
   whatsapp: {
     display: "+971 50 453 0759",
     link: "https://wa.me/971504530759?text=Hello%20Satluj%20Transport%2C%20I%20would%20like%20a%20quote.",
   },
-  email: "info@satlujtransport.com",
+  email: "satlujtransportdubai@gmail.com",
   instagram: "https://www.instagram.com/satlujtrpt/",
   mapEmbed:
     "https://www.google.com/maps?q=England+Cluster+X09+International+City+Dubai&output=embed",
